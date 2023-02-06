@@ -1,0 +1,3 @@
+[iri]
+[iri.nina34a] # nino3.4 anomaly
+index_url='https://iri.columbia.edu/our-expertise/climate/forecasts/enso/%Y-{MONTH_ENG}-quick-look/?enso_tab=enso-{SOURCE}_plume'

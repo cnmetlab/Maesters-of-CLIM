@@ -1,0 +1,47 @@
+[psl]
+[psl.default]
+columns=['year','1','2','3','4','5','6','7','8','9','10','11','12']
+missing=-99.99
+[psl.nina34a] # East Central Tropical Pacific SST
+index_url='https://psl.noaa.gov/data/correlation/nina34.anom.data'
+[psl.nina4a] # Central Tropical Pacific SST 
+index_url='https://psl.noaa.gov/data/correlation/nina4.anom.data'
+[psl.nina3a] # Eastern Tropical Pacific SST
+index_url='https://psl.noaa.gov/data/correlation/nina3.anom.data'
+[psl.nina1a] # Extreme Eastern Tropical Pacific SST 
+index_url='https://psl.noaa.gov/data/correlation/nina1.anom.data'
+[psl.soi] # Southern Oscillation Index
+index_url='https://psl.noaa.gov/data/correlation/soi.data'
+[psl.oni] # Oceanic Nino index
+index_url='https://psl.noaa.gov/data/correlation/oni.data'
+missing=-99.9
+[psl.tni] # Trans Nino index
+index_url='https://psl.noaa.gov/data/correlation/tni.data'
+[psl.censo] # Bivariate enso from nina3.4 & soi
+index_url='https://psl.noaa.gov/data/correlation/censo.data'
+missing=-9.99
+[psl.ao] # Arctic Oscillation
+index_url='https://psl.noaa.gov/data/correlation/ao.data'
+missing=-999
+[psl.pdo] # Pacific Decadal Oscillation
+index_url='https://psl.noaa.gov/data/correlation/pdo.data'
+missing=-9.90
+[psl.wp] # Western Pacific Index
+index_url='https://psl.noaa.gov/data/correlation/wp.data'
+missing=-99.9
+[psl.amo_us] # AMO, unsmoothed
+index_url='https://psl.noaa.gov/data/correlation/amon.us.data'
+[psl.amo_sm] # AMO, smoothed
+index_url='https://psl.noaa.gov/data/correlation/amon.sm.data'
+missing=-99.99
+[ncei]
+[ncei.ninaa] # year,month,nino3a,nino4a,nino3.4a,nino1.2a
+index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat'
+[ncei.nina] # year,month,nino3,nino4,nino3.4,nino1.2
+index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.sst.dat'
+[ncei.pdo] # Year Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.pdo.dat'
+[ncei.amo]
+index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.amo.dat'
+[ncei.iod]
+index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.iod.dat'
