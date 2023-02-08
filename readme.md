@@ -35,4 +35,14 @@ c = Climate_Maester(
 cpcdf = c.forecast(pred_at=datetime(2022, 10, 1))
 ```
 
+## TODO
+
+The following support is on the way. 🚀🚀🚀
+> 1. Data
+- [ ] Climate index from NCEI
+- [ ] ERA5 reanalysis from RDA and AWS
+
+> 2. Basic Computation
+- [ ] Compiste Analysis
+
 
