@@ -6,7 +6,7 @@ Maesters-of-Clim tempt to help retriving climate data (climate index, reanalysis
 
 ### Install
 ```shell
-pip install maesters_of_clim==0.0.1
+pip install maesters-clim==0.0.1
 ```
 
 ### Usage
