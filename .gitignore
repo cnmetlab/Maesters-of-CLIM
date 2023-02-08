@@ -1,3 +1,6 @@
 *_cache
 __pycache__
 *_checkpoints
+*egg-info
+*dist
+*build
