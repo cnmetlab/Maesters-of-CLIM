@@ -2,6 +2,7 @@
 [psl.default]
 columns=['year','1','2','3','4','5','6','7','8','9','10','11','12']
 missing=-99.99
+skiprows=[]
 [psl.nina34a] # East Central Tropical Pacific SST
 index_url='https://psl.noaa.gov/data/correlation/nina34.anom.data'
 [psl.nina4a] # Central Tropical Pacific SST 
@@ -35,13 +36,23 @@ index_url='https://psl.noaa.gov/data/correlation/amon.us.data'
 index_url='https://psl.noaa.gov/data/correlation/amon.sm.data'
 missing=-99.99
 [ncei]
+[ncei.default]
+missing=99.99
+skiprows=[]
 [ncei.ninaa] # year,month,nino3a,nino4a,nino3.4a,nino1.2a
 index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat'
+columns=['year', 'month', 'nina3a', 'nina4a', 'nina34a', 'nina12a']
 [ncei.nina] # year,month,nino3,nino4,nino3.4,nino1.2
 index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.sst.dat'
+columns=['year', 'month', 'nina3', 'nina4', 'nina34', 'nina12']
 [ncei.pdo] # Year Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.pdo.dat'
+columns=['year', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
 [ncei.amo]
 index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.amo.dat'
+columns=['year','month','amo']
+skiprows=[0,1]
 [ncei.iod]
 index_url='https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.iod.dat'
+columns=['year', 'month', 'iod_west', 'iod_east', 'iod_diff']
+skiprows=[0]
