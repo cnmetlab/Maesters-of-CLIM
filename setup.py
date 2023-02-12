@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 
-with open(os.path.join(FILE_PATH, "README.md"), "r") as f:
+with open(os.path.join(FILE_PATH, "readme.md"), "r") as f:
     description = f.read()
 
 with open(os.path.join(FILE_PATH, "requirements.txt")) as f:

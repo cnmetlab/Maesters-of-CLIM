@@ -33,7 +33,7 @@ The following support
 
 ### Install
 ```shell
-pip install maesters-clim==0.0.1
+pip install maesters-clim==0.0.2
 ```
 
 ### Usage
