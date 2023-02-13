@@ -1,5 +1,6 @@
 from maesters_of_clim.fetcher.iri import get_iri_ensoprob_forecast
 from maesters_of_clim.fetcher.psl import get_psl_index_history
+from maesters_of_clim.fetcher.ncei import get_ncei_index_history
 
 import pandas as pd
 
@@ -25,6 +26,15 @@ class Climate_Maester:
                     df = tmp
                 else:
                     df = df.merge(tmp, how='outer', on='month')
+        elif self.source == 'ncei':
+            df = None
+            for i in self.indexes:
+                tmp = get_ncei_index_history(i)
+                if df is None:
+                    df = tmp
+                else:
+                    df = df.merge(tmp, how='outer', on='month')
+
         return df
 
     def forecast(self, pred_at:datetime)->pd.DataFrame:

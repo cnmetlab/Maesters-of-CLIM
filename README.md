@@ -60,13 +60,17 @@ c = Climate_Maester(
     source='cpc'
 )
 cpcdf = c.forecast(pred_at=datetime(2022, 10, 1))
+
+# calculate ENSO event from nina34a/nina3a/soi ...
+from maesters_of_clim.analysis import enso_event
+df['enso_event'] = enso_event(df, column='nina34a', temp=0.5, months=6)
+df[~df['enso_event'].isna()]
 ```
 
 ## TODO
 
 The following support is on the way. 🚀🚀🚀
 > 1. Data
-- [ ] Climate index from NCEI
 - [ ] ERA5 reanalysis from RDA and AWS
 
 > 2. Basic Computation
