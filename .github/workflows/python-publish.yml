@@ -32,16 +32,6 @@ jobs:
         pip install build twine
     - name: Build package
       run: python -m build
-    - name: Twine upload
-      env: 
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        TWINE_PY_TOKEN: ${{ secrets.PASSWORD}}
-      run: |
-        echo $TWINE_PASSWORD
-        echo $TWINE_PY_TOKEN
-        echo $TWINE_USERNAME
-        twine upload dist/*
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
