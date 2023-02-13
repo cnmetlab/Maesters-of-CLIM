@@ -11,7 +11,7 @@ with open(os.path.join(FILE_PATH, "requirements.txt")) as f:
 
 setup(
     name="maesters-clim",
-    version="0.0.2",
+    version="0.0.3",
     author="blizhan",
     author_email="blizhan@icloud.com",
     description="Maesters-of-Clim tempt to help retriving climate data (climate index, reanalysis) from the main-stream climate insitution (like IRI, PSL, NCEI, RDA).",
