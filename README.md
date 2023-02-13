@@ -9,7 +9,7 @@ The following support
 |Institution|Source|DataType|DataName|
 |--|--|--|--|
 |IRI|IRI|forecast|ENSO Probability|
-|IRI|CPC|Forecast|ENSO Probability|
+|IRI|CPC|forecast|ENSO Probability|
 |PSL/NCEI|PSL/NCEI|history|Nina 34 Anomaly|
 |PSL/NCEI|PSL/NCEI|history|Nina 3 Anomaly|
 |PSL/NCEI|PSL/NCEI|history|Nina 4 Anomaly|
