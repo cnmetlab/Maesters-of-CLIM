@@ -20,7 +20,7 @@ The following support
 |NCEI|NCEI|history|Nina 3.4 SST|`Climate_Maester(['nina34'], 'ncei').history()`|
 |NCEI|NCEI|history|Nina 4 SST|`Climate_Maester(['nina4'], 'ncei').history()`|
 |NCEI|NCEI|history|Indian Ocean Dipole|`Climate_Maester(['iod'], 'ncei').history()`|
-|PSL|PSL|history|Southern Oscillation Index|`Climate_Maester(['amo_sm'], 'soi').history()`|
+|PSL|PSL|history|Southern Oscillation Index|`Climate_Maester(['soi'], 'psl').history()`|
 |PSL|PSL|history|Oceanic Nino index|`Climate_Maester(['oni'], 'psl').history()`|
 |PSL|PSL|history|Trans Nino index|`Climate_Maester(['tni'], 'psl').history()`|
 |PSL|PSL|history|Arctic Oscillation|`Climate_Maester(['ao'], 'psl').history()`|
