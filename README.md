@@ -6,29 +6,29 @@ Maesters-of-Clim tempt to help retriving climate data (climate index, reanalysis
 
 The following support
 
-|Institution|Source|DataType|DataName|
-|--|--|--|--|
-|IRI|IRI|forecast|ENSO Probability|
-|IRI|CPC|forecast|ENSO Probability|
-|PSL/NCEI|PSL/NCEI|history|Nina 34 Anomaly|
-|PSL/NCEI|PSL/NCEI|history|Nina 3 Anomaly|
-|PSL/NCEI|PSL/NCEI|history|Nina 4 Anomaly|
-|PSL|PSL|history|Nina 1 Anomaly|
-|NCEI|NCEI|history|Nina 1.2 Anomaly|
-|NCEI|NCEI|history|Nina 1.2 SST|
-|NCEI|NCEI|history|Nina 3 SST|
-|NCEI|NCEI|history|Nina 3.4 SST|
-|NCEI|NCEI|history|Nina 4 SST|
-|NCEI|NCEI|history|Indian Ocean Dipole|
-|PSL|PSL|history|Southern Oscillation Index|
-|PSL|PSL|history|Oceanic Nino index|
-|PSL|PSL|history|Trans Nino index|
-|PSL|PSL|history|Arctic Oscillation|
-|PSL|PSL|history|Bivariate ENSO from nina3.4 & soi|
-|PSL|PSL|history|Western Pacific Index|
-|PSL|PSL|history|AMO smoothed|
-|PSL/NCEI|PSL/NCEI|history|AMO unsmoothed|
-|PSL/NCEI|PSL/NCEI|history|Pacific Decadal Oscillation|
+|Institution|Source|DataType|DataName|FetchData|
+|--|--|--|--|--|
+|IRI|IRI|forecast|ENSO Probability|`Climate_Maester(['enso'], 'iri').forecast(pred_at=date)`|
+|IRI|CPC|forecast|ENSO Probability|`Climate_Maester(['enso'], 'cpc').forecast(pred_at=date)`|
+|PSL/NCEI|PSL/NCEI|history|Nina 34 Anomaly|`Climate_Maester(['nina34a'], 'ncei').history()`|
+|PSL/NCEI|PSL/NCEI|history|Nina 3 Anomaly|`Climate_Maester(['nina3'], 'ncei').history()`|
+|PSL/NCEI|PSL/NCEI|history|Nina 4 Anomaly|`Climate_Maester(['nina4'], 'ncei').history()`|
+|PSL|PSL|history|Nina 1 Anomaly|`Climate_Maester(['nina1a'], 'psl').history()`|
+|NCEI|NCEI|history|Nina 1.2 Anomaly|`Climate_Maester(['nina12a'], 'ncei').history()`|
+|NCEI|NCEI|history|Nina 1.2 SST|`Climate_Maester(['nina12'], 'ncei').history()`|
+|NCEI|NCEI|history|Nina 3 SST|`Climate_Maester(['nina3'], 'ncei').history()`|
+|NCEI|NCEI|history|Nina 3.4 SST|`Climate_Maester(['nina34'], 'ncei').history()`|
+|NCEI|NCEI|history|Nina 4 SST|`Climate_Maester(['nina4'], 'ncei').history()`|
+|NCEI|NCEI|history|Indian Ocean Dipole|`Climate_Maester(['iod'], 'ncei').history()`|
+|PSL|PSL|history|Southern Oscillation Index|`Climate_Maester(['amo_sm'], 'soi').history()`|
+|PSL|PSL|history|Oceanic Nino index|`Climate_Maester(['oni'], 'psl').history()`|
+|PSL|PSL|history|Trans Nino index|`Climate_Maester(['tni'], 'psl').history()`|
+|PSL|PSL|history|Arctic Oscillation|`Climate_Maester(['ao'], 'psl').history()`|
+|PSL|PSL|history|Bivariate ENSO from nina3.4 & soi|`Climate_Maester(['censo'], 'psl').history()`|
+|PSL|PSL|history|Western Pacific Index|`Climate_Maester(['wp'], 'psl').history()`|
+|PSL|PSL|history|AMO smoothed|`Climate_Maester(['amo_sm'], 'psl').history()`|
+|PSL/NCEI|PSL/NCEI|history|AMO unsmoothed|`Climate_Maester(['amo'], 'ncei').history()`|
+|PSL/NCEI|PSL/NCEI|history|Pacific Decadal Oscillation|`Climate_Maester(['pdo'], 'ncei').history()`|
 
 
 ### Install
