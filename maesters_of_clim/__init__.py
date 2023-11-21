@@ -37,10 +37,13 @@ class Climate_Maester:
 
         return df
 
-    def forecast(self, pred_at:datetime)->pd.DataFrame:
-        if self.source in ['iri', 'cpc'] and 'enso' in self.indexes:
-            df = get_iri_ensoprob_forecast(pred_month=pred_at, source=self.source)
-        elif self.source is None:
+    def forecast(self, pred_at:datetime, source:str=None)->pd.DataFrame:
+        source = self.source if source is None else source
+        if source in ['iri', 'cpc'] and 'enso' in self.indexes:
+            df = get_iri_ensoprob_forecast(pred_month=pred_at, source=source)
+        elif self.source is not None:
+            df = get_iri_ensoprob_forecast(pred_month=pred_at, source=source)
+        else:
             df = get_iri_ensoprob_forecast(pred_month=pred_at)
         return df
             

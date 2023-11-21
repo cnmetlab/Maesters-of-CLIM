@@ -23,7 +23,10 @@ def enso_event(df:pd.DataFrame,column:str, temp:float, months:int=6)->pd.Series:
     df['enso'] = np.where(df['flag_count']>=months, df['enso'], np.nan)
     df['enso_flag'] = np.where(df['enso'] != df['enso'].shift(1), 0, 1)
     df['enso_flag_cumsum'] = df['enso_flag'].cumsum()
-    df['enso'] = np.where((~df['enso'].isna()) &(df['enso_flag_cumsum']>=months-1), df['enso'],np.nan)
+    start = df.groupby('flag_cumsum')['enso_flag_cumsum'].first().reset_index()
+    df = df.merge(start, how='left', on='flag_cumsum', suffixes=['', '_start'])
+    df['diff'] = df['enso_flag_cumsum'] - df['enso_flag_cumsum_start']
+    df['enso'] = np.where((~df['enso'].isna()) &((df['enso_flag_cumsum']>=months-1) & (df['diff']>=months-1)), df['enso'],np.nan)
     return df['enso']
 
 

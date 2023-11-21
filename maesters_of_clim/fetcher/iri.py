@@ -26,6 +26,24 @@ def parse_table(table):
 
     return pd.DataFrame(data=data, columns=columns)
 
+def parse_tabel_multimodel(table):
+    thead = table.find('thead').find_all('tr')
+    tbody = table.find('tbody').find_all('tr')
+    if len(thead) < 2:
+        return
+    columns = [c.text.strip() for c in thead[1].find_all('th')]
+    data = []
+    for row in tbody:
+        row_data = row.find_all('td')
+        data_ = [row.find('th').text.strip()]
+        data_.extend([d.text.strip() for d in row_data])
+        data.append(data_)
+    
+    if len(data)==0:
+        return None
+
+    return pd.DataFrame(data=data, columns=columns).dropna()
+
 
 def parse_ensotable_response(response:requests.Response, source:str)->pd.DataFrame:
     """parse iri enso table from response
@@ -38,12 +56,16 @@ def parse_ensotable_response(response:requests.Response, source:str)->pd.DataFra
         pd.DataFrame: _description_
     """
     bs_items = BeautifulSoup(response.text, "html.parser")
-    enso_tables = bs_items.find_all('table', attrs={'class':'ensoprob'})
-    if source == 'cpc':
-        return parse_table(enso_tables[0])
-    elif source == 'iri':
-        return parse_table(enso_tables[1])
-    
+    if source in ['cpc', 'iri']:
+        enso_tables = bs_items.find_all('table', attrs={'class':'ensoprob'})
+        if source == 'cpc':
+            return parse_table(enso_tables[0])
+        elif source == 'iri':
+            return parse_table(enso_tables[1])
+    else:
+        enso_tables = bs_items.find_all('table', attrs={'id':'modelsTable'})
+        if len(enso_tables):
+            return parse_tabel_multimodel(enso_tables[0])
 
 
 def month2season(month:int)->str:
@@ -83,12 +105,13 @@ def season2month(season:str)->int:
     return season_dict.get(season)
 
 
-def format_iri(pred_month:datetime, df:pd.DataFrame)->pd.DataFrame:
+def format_iri(pred_month:datetime, df:pd.DataFrame, source:str='iri')->pd.DataFrame:
     """format iri table
 
     Args:
         pred_month (datetime): _description_
         df (pd.DataFrame): _description_
+        source (str, optional): _description_. Defaults to 'iri'.
 
     Returns:
         pd.DataFrame: _description_
@@ -97,13 +120,23 @@ def format_iri(pred_month:datetime, df:pd.DataFrame)->pd.DataFrame:
     #     _,monthend = calendar.monthrange(pred_month.year, pred_month.month)
     #     pred_month =pred_month.replace(day=monthend) + timedelta(days=1)
     pred_month= pred_month.replace(day=1)
+    if source in ['cpc', 'iri']:
+        df['Release_Month'] = pred_month.strftime('%Y-%m')
+        df['Forecast_Season'] = df['Season'].apply(season2month)
+        df['Forecast_Season'] = df['Forecast_Season'].apply(
+            lambda x: f'{pred_month.year + 1}-{x:02}' if x - pred_month.month < 0 else f'{pred_month.year}-{x:02}'
+            )
+        df = df.rename(columns={'La Niña': 'LaNina', 'El Niño': 'ElNino'})
+    else:
+        df_ = df.set_index('Model').T
+        df = df_.reset_index().rename(columns={'index':'Season'})
+        df['Release_Month'] = pred_month.strftime('%Y-%m')
+        df['Forecast_Season'] = df['Season'].apply(season2month)
+        df['Forecast_Season'] = df['Forecast_Season'].apply(
+            lambda x: f'{pred_month.year + 1}-{x:02}' if x - pred_month.month < 0 else f'{pred_month.year}-{x:02}'
+            )
+        df.columns.name = None
 
-    df['Release_Month'] = pred_month.strftime('%Y-%m')
-    df['Forecast_Season'] = df['Season'].apply(season2month)
-    df['Forecast_Season'] = df['Forecast_Season'].apply(
-        lambda x: f'{pred_month.year + 1}-{x:02}' if x - pred_month.month < 0 else f'{pred_month.year}-{x:02}'
-        )
-    df = df.rename(columns={'La Niña': 'LaNina', 'El Niño': 'ElNino'})
     return df
 
 
@@ -119,7 +152,11 @@ def get_iri_ensoprob_forecast(pred_month:datetime, source:str='iri')->pd.DataFra
         pd.DataFrame: _description_
     """
     month_name = calendar.month_name[pred_month.month]
-    request_url = pred_month.strftime(nina34a_url).format(MONTH_ENG=month_name, SOURCE=source)
+    if source in ['cpc', 'iri']:
+        request_url = pred_month.strftime(nina34a_url).format(MONTH_ENG=month_name, SOURCE=source, type='plume')
+    elif source in ['detail']:
+        request_url = pred_month.strftime(nina34a_url).format(MONTH_ENG=month_name, SOURCE='sst', type='table')
+
     response = requests.get(
         request_url,
         timeout=5,
@@ -127,7 +164,7 @@ def get_iri_ensoprob_forecast(pred_month:datetime, source:str='iri')->pd.DataFra
     if response.status_code == 200:
         df = parse_ensotable_response(response, source)
         if df is not None:
-            df = format_iri(pred_month, df)
+            df = format_iri(pred_month, df, source)
         return df
     else:
         return None
