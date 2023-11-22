@@ -10,6 +10,7 @@ The following support
 |--|--|--|--|--|
 |IRI|IRI|forecast|ENSO Probability|`Climate_Maester(['enso'], 'iri').forecast(pred_at=date)`|
 |IRI|CPC|forecast|ENSO Probability|`Climate_Maester(['enso'], 'cpc').forecast(pred_at=date)`|
+|JAMSTEC|JAMSTEC|forecast| Dipole Mode Index|`Climate_Maester(['dmi'], 'jamstec').forecast()`|  
 |PSL/NCEI|PSL/NCEI|history|Nina 34 Anomaly|`Climate_Maester(['nina34a'], 'ncei').history()`|
 |PSL/NCEI|PSL/NCEI|history|Nina 3 Anomaly|`Climate_Maester(['nina3'], 'ncei').history()`|
 |PSL/NCEI|PSL/NCEI|history|Nina 4 Anomaly|`Climate_Maester(['nina4'], 'ncei').history()`|
@@ -27,8 +28,17 @@ The following support
 |PSL|PSL|history|Bivariate ENSO from nina3.4 & soi|`Climate_Maester(['censo'], 'psl').history()`|
 |PSL|PSL|history|Western Pacific Index|`Climate_Maester(['wp'], 'psl').history()`|
 |PSL|PSL|history|AMO smoothed|`Climate_Maester(['amo_sm'], 'psl').history()`|
+|PSL|PSL|history|Dipole Mode Index|`Climate_Maester(['dmi'], 'psl').history()`|
+|PSL|PSL|history|Dipole Mode Index West|`Climate_Maester(['dmiwest'], 'psl').history()`|
+|PSL|PSL|history|Dipole Mode Index East|`Climate_Maester(['dmieast'], 'psl').history()`|
+|PSL|PSL|history|North Atlantic Oscillation|`Climate_Maester(['nao'], 'psl').history()`|
+|PSL|PSL|history|North Pacific Index|`Climate_Maester(['np'], 'psl').history()`|
+|PSL|PSL|history|Trans Polar Index|`Climate_Maester(['tpi'], 'psl').history()`|
+|PSL|PSL|history|Global Average Temperature Anomaly from Station|`Climate_Maester(['glbts'], 'psl').history()`|
+|PSL|PSL|history|Global Average Temperature Anomaly from Station and SST|`Climate_Maester(['glbtssst'], 'psl').history()`|
 |PSL/NCEI|PSL/NCEI|history|AMO unsmoothed|`Climate_Maester(['amo'], 'ncei').history()`|
 |PSL/NCEI|PSL/NCEI|history|Pacific Decadal Oscillation|`Climate_Maester(['pdo'], 'ncei').history()`|
+
 
 
 ### Install
@@ -36,7 +46,7 @@ The following support
 pip install maesters-clim
 ```
 
-### Usage
+### [Usage](example/climate_index.ipynb)
 ```python
 from maesters_of_clim import Climate_Maester
 from datetime import datetime

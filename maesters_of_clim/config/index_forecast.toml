@@ -1,3 +1,6 @@
 [iri]
 [iri.nina34a] # nino3.4 anomaly
 index_url='https://iri.columbia.edu/our-expertise/climate/forecasts/enso/%Y-{MONTH_ENG}-quick-look/?enso_tab=enso-{SOURCE}_{type}'
+[jamstec]
+[jamstec.dmi] # dipole model index
+index_url='https://www.jamstec.go.jp/virtualearth/data/SINTEX/SINTEX_DMI.csv'

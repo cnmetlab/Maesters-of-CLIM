@@ -40,7 +40,7 @@ def get_psl_index_history(index_name:str)->pd.DataFrame:
     index_url = index_dict.get('index_url')
     columns = index_dict.get('columns', psl_index_history.get('default').get('columns'))
     missing = index_dict.get('missing', psl_index_history.get('default').get('missing'))
-    df = pd.read_csv(index_url, delimiter='\s+', names=columns)
+    df = pd.read_csv(index_url, delimiter='\s+', names=columns,on_bad_lines='skip')
 
     if index_name in []:
         pass

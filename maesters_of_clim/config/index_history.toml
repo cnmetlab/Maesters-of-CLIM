@@ -35,6 +35,31 @@ index_url='https://psl.noaa.gov/data/correlation/amon.us.data'
 [psl.amo_sm] # AMO, smoothed
 index_url='https://psl.noaa.gov/data/correlation/amon.sm.data'
 missing=-99.99
+[psl.dmi]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data'
+missing=-9999
+[psl.dmiwest]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmiwest.had.long.data'
+missing=-9999
+[psl.dmieast]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmieast.had.long.data'
+missing=-9999
+[psl.nao]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/nao.long.data'
+missing=-99.99
+[psl.np]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/np.long.data'
+missing=-999
+[psl.tpi] # IPO
+index_url='https://psl.noaa.gov/data/timeseries/IPOTPI/tpi.timeseries.ersstv5.data'
+missing=-99
+[psl.glbts]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/GLBTS.long.data'
+missing=9999
+[psl.glbtssst]
+index_url='https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/GLBTSSST.long.data'
+missing=9999
+
 [ncei]
 [ncei.default]
 missing=99.99
